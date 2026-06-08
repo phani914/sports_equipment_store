@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AboutPage } from './components/AboutPage.jsx';
 import { AuthModal } from './components/AuthModal.jsx';
 import { CartDrawer } from './components/CartDrawer.jsx';
 import { CheckoutPage } from './components/CheckoutPage.jsx';
@@ -10,6 +11,7 @@ import { products } from './data/products.js';
 import { formatCurrency } from './utils/currency.js';
 
 const categories = ['Running', 'Fitness', 'Football', 'Basketball', 'Tennis'];
+const heroTags = Array.from({ length: 24 }, (_, index) => `#playbetter-${index}`);
 
 export default function App() {
   const [authMode, setAuthMode] = useState(null);
@@ -112,6 +114,7 @@ export default function App() {
     <div className="app-shell">
       <Header
         onAuthOpen={(mode) => openAuth(mode)}
+        onAboutOpen={() => setPageView('about')}
         onCartOpen={() => setCartOpen(true)}
         onStoreOpen={handleBackToStore}
         accountMessage={accountMessage}
@@ -123,14 +126,21 @@ export default function App() {
           onBackToStore={handleBackToStore}
           onPlaceOrder={handlePlaceOrder}
         />
+      ) : pageView === 'about' ? (
+        <AboutPage onBackToStore={handleBackToStore} />
       ) : pageView === 'confirmation' && lastOrder ? (
         <OrderConfirmation order={lastOrder} onContinueShopping={handleBackToStore} />
       ) : (
         <main className="page">
           <section className="hero" id="home">
+            <div className="hero-tag-wall" aria-hidden="true">
+              {heroTags.map((tag) => (
+                <span key={tag}>#playbetter</span>
+              ))}
+            </div>
             <div className="hero-content">
-              <p className="eyebrow">New season performance gear</p>
-              <h1>Train harder with premium sports equipment.</h1>
+              <p className="eyebrow">ApexGear turns two</p>
+              <h1>Premium gear for people who train better.</h1>
               <p className="hero-copy">
                 Shop stadium-ready balls, training essentials, running gear, and
                 recovery accessories selected for athletes who want to move better.
@@ -143,6 +153,7 @@ export default function App() {
                   View deals
                 </a>
               </div>
+              <p className="hero-note">Free shipping on kits over {formatCurrency(12500)}</p>
               <dl className="hero-stats" aria-label="Store highlights">
                 <div>
                   <dt>6k+</dt>
@@ -162,7 +173,8 @@ export default function App() {
           <section className="category-band" id="categories" aria-label="Shop by category">
             {categories.map((category) => (
               <a href="#products" key={category}>
-                {category}
+                <span>{category}</span>
+                <small>Shop now</small>
               </a>
             ))}
           </section>

@@ -5,10 +5,10 @@ export function ProductGrid({ products, onAddToCart }) {
     <section className="product-section" id="products">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">Featured equipment</p>
-          <h2>Performance picks for every kind of athlete.</h2>
+          <p className="eyebrow">Store</p>
+          <h2>Choose your everyday training setup.</h2>
         </div>
-        <a className="text-link" href="#categories">Explore categories</a>
+        <a className="text-link" href="#categories">Compare gear</a>
       </div>
       <div className="product-grid">
         {products.map((product) => (

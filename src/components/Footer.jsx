@@ -2,16 +2,16 @@ import { Facebook, Instagram, Shield, Twitter } from 'lucide-react';
 
 const footerGroups = [
   {
-    title: 'Shop',
-    links: ['Running', 'Fitness', 'Football', 'Basketball'],
+    title: 'Team sports',
+    links: ['Velocity Pro Football', 'HoopElite Basketball', 'Compare balls'],
+  },
+  {
+    title: 'Training',
+    links: ['PulseFit Gloves', 'StrideMax Shoes', 'HydroSprint Bottle'],
   },
   {
     title: 'Support',
-    links: ['Shipping', 'Returns', 'Size guide', 'Contact'],
-  },
-  {
-    title: 'Company',
-    links: ['About', 'Teams', 'Stores', 'Careers'],
+    links: ['Return Policy', 'Warranty Policy', 'For Teams'],
   },
 ];
 
@@ -32,6 +32,11 @@ export function Footer() {
             Premium sports equipment, training essentials, and match-day gear
             curated for athletes who keep showing up.
           </p>
+          <div className="footer-contact">
+            <strong>Contact us</strong>
+            <a href="mailto:care@apexgear.example">care@apexgear.example</a>
+            <span>WhatsApp support: +91 87885 56920</span>
+          </div>
           <div className="social-links" aria-label="Social links">
             <a href="#home" aria-label="ApexGear on Instagram">
               <Instagram size={18} aria-hidden="true" />

@@ -8,7 +8,10 @@ export function ProductCard({ product, onAddToCart }) {
         <img src={product.image} alt={product.name} loading="lazy" />
       </div>
       <div className="product-content">
-        <p className="product-category">{product.category}</p>
+        <div className="product-meta">
+          <p className="product-category">{product.category}</p>
+          <span>In stock</span>
+        </div>
         <h2>{product.name}</h2>
         <p>{product.description}</p>
       </div>
